@@ -1,2 +1,3 @@
 include 'rsync'
 include 'rsync-srv'
+include 'rsync-web'
