@@ -74,7 +74,6 @@ public class DiscoServer {
                 String reply = "DISCOVERY_REPLY";
                 byte[] sendData = reply.getBytes();
 
-                // Send the response
                 DatagramPacket sendPacket = new DatagramPacket(sendData,
                         sendData.length, clientAddress, clientPort);
                 try {

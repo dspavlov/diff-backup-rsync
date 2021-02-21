@@ -11,7 +11,7 @@ public class DiscoClient {
 
     private static final Logger logger = Logger.getLogger("root");
 
-    private static final int TIMEOUT_MS = 4000;
+    private static final int TIMEOUT_MS = 5000;
 
     public static void main(String[] args) throws IOException {
         DatagramSocket socket = new DatagramSocket();
