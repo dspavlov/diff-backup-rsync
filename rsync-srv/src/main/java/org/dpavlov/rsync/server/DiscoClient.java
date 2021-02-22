@@ -14,6 +14,8 @@ public class DiscoClient {
     private static final int TIMEOUT_MS = 5000;
 
     public static void main(String[] args) throws IOException {
+
+        // InetAddress addr = InetAddress.getByName("0.0.0.0");
         DatagramSocket socket = new DatagramSocket();
         socket.setBroadcast(true);
 

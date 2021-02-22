@@ -1,4 +1,4 @@
-package org.dpavlov;
+package org.dpavlov.rsync;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

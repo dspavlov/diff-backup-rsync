@@ -6,7 +6,9 @@ plugins {
 
 
 dependencies {
-    testImplementation "junit:junit:4.12"
+    implementation project(":rsync-srv")
+
+    testImplementation "junit:junit:" + junitVer
 }
 
 

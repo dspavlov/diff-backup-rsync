@@ -1,6 +1,10 @@
 
 
 dependencies {
-    testImplementation "junit:junit:4.12"
+    implementation 'net.jcip:jcip-annotations:1.0'
+
+    testImplementation "junit:junit:" + junitVer
+
+    implementation group: 'org.springframework', name: 'spring-context', version: springVer
 }
 

@@ -11,7 +11,7 @@ public class DiscoServer {
 
     public static final int MAX_PACKET_SIZE = 2048;
     private static final Logger logger = Logger.getLogger("root");
-    public static final int DISCOVERY_PORT = 1730;
+    public static final int DISCOVERY_PORT = NetConfig.BASE_PORT;
     private DatagramSocket socket;
 
     public static void main(String[] args) {
