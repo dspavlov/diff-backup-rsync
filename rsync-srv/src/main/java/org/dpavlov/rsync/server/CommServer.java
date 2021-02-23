@@ -1,9 +1,11 @@
 package org.dpavlov.rsync.server;
 
 import net.jcip.annotations.GuardedBy;
+import org.dpavlov.rsync.core.ConcurrencyUtil;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
@@ -13,7 +15,7 @@ import java.util.concurrent.Executors;
 
 @Component
 public class CommServer implements ICommServer {
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService srvAcceptorExecutor = Executors.newSingleThreadExecutor();
 
     @GuardedBy("this")
     private int localPort = -1;
@@ -30,7 +32,7 @@ public class CommServer implements ICommServer {
 
     @PostConstruct
     public void start() {
-        executor.submit(() -> {
+        srvAcceptorExecutor.submit(() -> {
             ServerSocket serverSocket = NetUtil.bindFreePort(NetConfig.BASE_PORT);
 
             int localPort = serverSocket.getLocalPort();
@@ -48,4 +50,8 @@ public class CommServer implements ICommServer {
         });
     }
 
+    @PreDestroy
+    public void stop() {
+        ConcurrencyUtil.stopExecutor(srvAcceptorExecutor);
+    }
 }

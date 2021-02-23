@@ -1,5 +1,7 @@
 package org.dpavlov.rsync.server;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -7,7 +9,8 @@ import java.net.InetAddress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DiscoServer {
+@Component
+public class DiscoServer implements Runnable {
 
     public static final int MAX_PACKET_SIZE = 2048;
     private static final Logger logger = Logger.getLogger("root");
@@ -19,6 +22,7 @@ public class DiscoServer {
         server.run();
     }
 
+    @Override
     public void run() {
         // quit if we get this many consecutive receive errors.
         // reset the counter after successfully receiving a packet.
